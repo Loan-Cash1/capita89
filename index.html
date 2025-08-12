@@ -299,14 +299,15 @@
     startBtn.addEventListener('click', function(e) {
         e.preventDefault();
         startBtn.classList.remove('pulse-once');
-        void startBtn.offsetWidth;
+        void startBtn.offsetWidth; // reflow trigger
         startBtn.classList.add('pulse-once');
-    });
 
-    startBtn.addEventListener('animationend', (ev) => {
-        if (ev.animationName === 'clickShrink') {
-            startBtn.classList.remove('pulse-once');
-        }
+        // Animation ඉවර උනාම link open වෙන්න
+        startBtn.addEventListener('animationend', (ev) => {
+            if (ev.animationName === 'clickShrink') {
+                window.location.href = startBtn.href;
+            }
+        }, { once: true });
     });
 </script>
 
